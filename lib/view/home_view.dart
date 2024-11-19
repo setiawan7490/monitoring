@@ -1,20 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'provider/kehadiran_provider.dart';
-import '../view/riwayat_view.dart';
+import '../provider/kehadiran_provider.dart';
 
-void main() {
-  runApp(
-    ChangeNotifierProvider(
-      create: (_) => KehadiranProvider(),
-      child: MaterialApp(
-        home: KehadiranView(),
-      ),
-    ),
-  );
-}
-
-class KehadiranView extends StatelessWidget {
+class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<KehadiranProvider>(context);
@@ -68,17 +56,6 @@ class KehadiranView extends StatelessWidget {
                   }
                 : null, // Tombol dinonaktifkan jika semua siswa belum hadir
             child: Text('Simpan Kehadiran'),
-          ),
-
-          // Tombol untuk membuka Riwayat Kehadiran
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => RiwayatView()),
-              );
-            },
-            child: Text('Lihat Riwayat Kehadiran'),
           ),
         ],
       ),
